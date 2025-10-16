@@ -6,8 +6,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Business Inquiries',
-    value: 'tirumalarajumahali@gloomdev.in',
-    href: 'mailto:tirumalarajumahali@gloomdev.in',
+    value: 'info@gloomdev.in',
+    href: 'mailto:info@gloomdev.in',
   },
   {
     icon: Mail,
@@ -121,10 +121,10 @@ export default function ContactForm() {
             </div>
             <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Business Inquiries</h3>
             <a
-              href="mailto:tirumalarajumahali@gloomdev.in"
+              href="mailto:info@gloomdev.in"
               className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
-              tirumalarajumahali@gloomdev.in
+              info@gloomdev.in
             </a>
           </motion.div>
 

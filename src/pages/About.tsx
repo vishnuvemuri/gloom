@@ -33,12 +33,12 @@ const leadership = [
     bio: 'Visionary leader with extensive experience in technology innovation and business strategy.',
   },
   {
-    name: 'Vishnu',
+    name: 'Vishnuvardhan Vemuri',
     title: 'Managing Director',
     bio: 'Expert in digital transformation and enterprise solutions with a focus on client success.',
   },
   {
-    name: 'Syam Gopal',
+    name: 'Syam Gopal Meda',
     title: 'Managing Director',
     bio: 'Strategic leader specializing in procurement optimization and operational excellence.',
   },
@@ -83,21 +83,74 @@ export default function About() {
       <NavBar />
       <main>
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-navy via-navy-light to-navy-dark text-white py-20">
-          <div className="container-custom">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                About GloomDev
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-                GloomDev empowers organizations through innovation, integrity, and excellence across every service we deliver.
-              </p>
-            </motion.div>
+        <section className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+          {/* Premium Background Pattern */}
+          <div className="absolute inset-0">
+            
+            {/* Floating Elements */}
+            <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
+            <div className="absolute top-40 right-20 w-1 h-1 bg-cyan-400 rounded-full animate-pulse opacity-40" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-pulse opacity-50" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-300 rounded-full animate-pulse opacity-30" style={{ animationDelay: '3s' }}></div>
+          </div>
+          
+          <div className="container-custom relative z-10">
+            <div className="flex items-center justify-center min-h-screen py-20">
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-center space-y-8 max-w-4xl mx-auto px-4"
+              >
+                
+                {/* Main Headline */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                  className="text-3xl md:text-4xl lg:text-5xl font-normal leading-relaxed tracking-normal mb-6"
+                >
+                  <span className="block text-white mb-1">About</span>
+                  <span className="block text-blue-400 font-medium mb-1">
+                    GloomDev
+                  </span>
+                </motion.h1>
+                
+                {/* Subtitle */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                  className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-3xl mx-auto font-normal"
+                >
+                  GloomDev empowers organizations through innovation, integrity, and excellence across every service we deliver.
+                </motion.p>
+                
+                {/* Key Metrics */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                  className="grid grid-cols-3 gap-8 pt-8"
+                >
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-semibold text-blue-400 mb-1">5+</div>
+                    <div className="text-sm text-slate-300 font-normal">Years Experience</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-1">100%</div>
+                    <div className="text-sm text-slate-300 font-normal">Client Satisfaction</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-semibold text-blue-400 mb-1">24/7</div>
+                    <div className="text-sm text-slate-300 font-normal">Support</div>
+                  </div>
+                </motion.div>
+                
+              </motion.div>
+              
+            </div>
           </div>
         </section>
 

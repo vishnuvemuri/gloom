@@ -82,23 +82,78 @@ export default function Software() {
     <div className="min-h-screen">
       <NavBar />
       <main>
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-navy via-navy-light to-navy-dark text-white py-20">
-          <div className="container-custom">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Software Development Excellence
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-                We deliver scalable enterprise software, AI-powered systems, and cloud-native architectures that drive innovation and competitive advantage.
-              </p>
-            </motion.div>
+        {/* Hero Section - Premium Enterprise Design */}
+        <section className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+          {/* Premium Background Pattern */}
+          <div className="absolute inset-0">
+            
+            {/* Floating Elements */}
+            <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
+            <div className="absolute top-40 right-20 w-1 h-1 bg-cyan-400 rounded-full animate-pulse opacity-40" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-blue-300 rounded-full animate-pulse opacity-50" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-300 rounded-full animate-pulse opacity-30" style={{ animationDelay: '3s' }}></div>
           </div>
+          
+          <div className="container-custom relative z-10">
+            <div className="flex items-center justify-center min-h-screen py-20">
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-center space-y-8 max-w-4xl mx-auto px-4"
+              >
+                
+                {/* Main Headline */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                  className="text-3xl md:text-4xl lg:text-5xl font-normal leading-relaxed tracking-normal mb-6"
+                >
+                  <span className="block text-white mb-1">Software</span>
+                  <span className="block text-blue-400 font-medium mb-1">
+                    Development
+                  </span>
+                  <span className="block text-white">Excellence</span>
+                </motion.h1>
+                
+                {/* Subtitle */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                  className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-3xl mx-auto font-normal"
+                >
+                  Transform your business with cutting-edge software solutions that scale, perform, and deliver measurable results.
+                </motion.p>
+                
+                {/* Key Metrics */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                  className="grid grid-cols-3 gap-8 pt-8"
+                >
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-semibold text-blue-400 mb-1">500+</div>
+                    <div className="text-sm text-slate-300 font-normal">Projects Delivered</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-1">99.9%</div>
+                    <div className="text-sm text-slate-300 font-normal">Uptime SLA</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-semibold text-blue-400 mb-1">24/7</div>
+                    <div className="text-sm text-slate-300 font-normal">Support</div>
+                  </div>
+                </motion.div>
+                
+              </motion.div>
+              
+            </div>
+          </div>
+          
         </section>
 
         {/* Introduction */}
@@ -120,7 +175,7 @@ export default function Software() {
         </section>
 
         {/* Core Capabilities */}
-        <section className="section-padding bg-gray-50 dark:bg-navy-dark">
+        <section id="capabilities" className="section-padding bg-gradient-to-br from-gray-50 to-gray-100 dark:from-navy-dark dark:to-navy">
           <div className="container-custom">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -129,32 +184,37 @@ export default function Software() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h2 className="mb-4">Core Capabilities</h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Core Capabilities</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 Our comprehensive software development services cover every aspect of modern application development, from enterprise systems to cutting-edge AI solutions.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {capabilities.slice(0, isExpanded ? capabilities.length : 6).map((capability, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white dark:bg-navy-light rounded-xl p-6 border border-gray-200 dark:border-navy-light hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group bg-white dark:bg-navy-light rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-navy-light hover:border-[#00C6FF]/30 relative overflow-hidden"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4">
-                    <capability.icon className="w-6 h-6 text-primary" />
+                  {/* Subtle gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00C6FF]/5 to-[#007BFF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#00C6FF]/20 to-[#007BFF]/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <capability.icon className="w-8 h-8 text-[#007BFF] group-hover:text-[#00C6FF] transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white group-hover:text-[#007BFF] transition-colors duration-300">
+                      {capability.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {capability.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                    {capability.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {capability.description}
-                  </p>
                 </motion.div>
               ))}
             </div>
@@ -181,8 +241,9 @@ export default function Software() {
         </section>
 
         {/* Development Process */}
-        <section className="section-padding bg-white dark:bg-navy">
-          <div className="container-custom">
+        <section className="section-padding bg-white dark:bg-navy relative overflow-hidden">
+          
+          <div className="container-custom relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -190,59 +251,98 @@ export default function Software() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h2 className="mb-4">Our Development Process</h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Our Development Process</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 We follow a proven 5-step development process that ensures quality, transparency, and successful project delivery.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold text-lg">{step.step}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {step.description}
-                  </p>
-                </motion.div>
-              ))}
+            <div className="relative">
+              {/* Timeline Connector */}
+              <div className="hidden lg:block absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-[#00C6FF] via-[#007BFF] to-[#00C6FF] opacity-30"></div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+                {processSteps.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className="relative text-center group"
+                  >
+                    {/* Timeline Dot */}
+                    <div className="hidden lg:block absolute -top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-br from-[#00C6FF] to-[#007BFF] rounded-full border-4 border-white dark:border-navy shadow-lg z-10"></div>
+                    
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-gradient-to-br from-white to-gray-50 dark:from-navy-light dark:to-navy rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-navy-light"
+                    >
+                      <div className="w-20 h-20 bg-gradient-to-br from-[#00C6FF] to-[#007BFF] rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <span className="text-white font-bold text-xl">{step.step}</span>
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white group-hover:text-[#007BFF] transition-colors duration-300">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        {step.description}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-gradient-to-r from-primary to-primary-dark text-white">
-          <div className="container-custom text-center">
+        <section className="section-padding bg-gradient-to-br from-[#00C6FF] via-[#007BFF] to-[#1B2735] text-white relative overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+          
+          <div className="container-custom text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-block mb-8"
+              >
+                <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
+                  <CheckCircle className="w-10 h-10 text-white" />
+                </div>
+              </motion.div>
+              
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                 Ready to Build Your Next Software Solution?
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
                 Let's discuss your project requirements and create a custom software solution that drives your business forward.
               </p>
-              <a
-                href="/contact"
-                className="inline-flex items-center space-x-2 px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300"
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex justify-center items-center"
               >
-                <span>Get a Consultation</span>
-                <ArrowRight className="w-5 h-5" />
-              </a>
+                <a
+                  href="#capabilities"
+                  className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-xl font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300"
+                >
+                  View Case Studies
+                </a>
+              </motion.div>
             </motion.div>
           </div>
         </section>

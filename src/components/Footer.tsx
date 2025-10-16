@@ -85,8 +85,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3 text-sm">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
-                <a href="mailto:tirumalarajumahali@gloomdev.in" className="hover:text-primary transition-colors">
-                  tirumalarajumahali@gloomdev.in
+                <a href="mailto:info@gloomdev.in" className="hover:text-primary transition-colors">
+                  info@gloomdev.in
                 </a>
               </li>
               <li className="flex items-start space-x-3 text-sm">

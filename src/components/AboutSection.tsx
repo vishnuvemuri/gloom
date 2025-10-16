@@ -30,11 +30,11 @@ const leadership = [
     title: 'Managing Director',
   },
   {
-    name: 'Vishnu',
+    name: 'Vishnuvardhan Vemuri',
     title: 'Managing Director',
   },
   {
-    name: 'Syam Gopal',
+    name: 'Syam Gopal Meda',
     title: 'Managing Director',
   },
 ];

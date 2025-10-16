@@ -9,6 +9,16 @@ export default function NavBar() {
   const [isDark, setIsDark] = useState(false);
   const location = useLocation();
 
+  // State to track if logo is available
+  const [logoAvailable, setLogoAvailable] = useState(false); // Start with false since logo doesn't exist yet
+
+  // Determine if we should show the logo or text
+  const shouldShowLogo = () => {
+    // Show logo ONLY when navbar background is white (scrolled state) and logo is available
+    // Show text when navbar is dark/transparent (initial state) or logo unavailable
+    return isScrolled && logoAvailable;
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -24,6 +34,24 @@ export default function NavBar() {
       document.documentElement.classList.remove('dark');
     }
   }, [isDark]);
+
+  // Check if logo exists on component mount
+  useEffect(() => {
+    const checkLogoExists = () => {
+      const img = new Image();
+      img.onload = () => setLogoAvailable(true);
+      img.onerror = () => {
+        // Try SVG fallback
+        const svgImg = new Image();
+        svgImg.onload = () => setLogoAvailable(true);
+        svgImg.onerror = () => setLogoAvailable(false);
+        svgImg.src = '/assets/gloomdev-logo.svg';
+      };
+      img.src = '/assets/gloomdev-logo.png';
+    };
+    
+    checkLogoExists();
+  }, []);
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -46,18 +74,59 @@ export default function NavBar() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           <motion.div
-            className="flex items-center space-x-2"
+            className="flex items-center"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">G</span>
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-              GloomDev
-            </span>
+            <Link to="/" className="flex items-center">
+              <AnimatePresence mode="wait">
+                {shouldShowLogo() ? (
+                  // Show Logo when navbar has light background and logo is available
+                  <motion.div
+                    key="logo"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                    className="h-12 w-auto"
+                  >
+                    <img
+                      src="/assets/gloomdev-logo.png"
+                      alt="GloomDev Logo"
+                      className="h-12 w-auto object-contain"
+                      onError={(e) => {
+                        // Try SVG fallback first
+                        if (e.currentTarget.src.includes('.png')) {
+                          e.currentTarget.src = '/assets/gloomdev-logo.svg';
+                        } else {
+                          // Fallback to text if both fail
+                          console.warn('Logo failed to load, falling back to text');
+                          setLogoAvailable(false);
+                        }
+                      }}
+                    />
+                  </motion.div>
+                ) : (
+                  // Show Text when navbar has dark/transparent background or logo unavailable
+                  <motion.div
+                    key="text"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-center"
+                  >
+                    <span className={`text-xl font-bold ${
+                      isDark 
+                        ? 'text-white' 
+                        : 'text-white' // Always white text on dark/transparent navbar
+                    }`}>
+                      GloomDev
+                    </span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </Link>
           </motion.div>
 

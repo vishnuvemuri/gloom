@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
   return (
@@ -62,16 +62,6 @@ export default function HeroSection() {
 
         </motion.div>
 
-        <motion.a
-          href="#solutions"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors animate-bounce"
-          aria-label="Scroll to solutions"
-        >
-          <ChevronDown className="w-8 h-8" />
-        </motion.a>
       </div>
     </section>
   );
