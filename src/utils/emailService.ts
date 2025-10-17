@@ -20,6 +20,11 @@ const getApiUrl = () => {
 export const sendEmail = async (data: EmailData): Promise<{ success: boolean; error?: string }> => {
   try {
     const apiUrl = getApiUrl();
+    console.log('API URL being used:', apiUrl);
+    console.log('Environment variables:', {
+      PROD: import.meta.env.PROD,
+      VITE_API_URL: import.meta.env.VITE_API_URL
+    });
     const response = await fetch(`${apiUrl}/send-email`, {
       method: 'POST',
       headers: {
