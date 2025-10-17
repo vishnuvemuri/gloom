@@ -12,9 +12,9 @@ app.use(express.json());
 // Email configuration
 const createTransporter = () => {
   return nodemailer.createTransport({
-    host: "smtp.zoho.in",
-    port: 465,
-    secure: true,
+    host: "smtp.zoho.com",
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.ZOHO_EMAIL || "info@gloomdev.in",
       pass: process.env.ZOHO_PASSWORD || "cAEz8PiuUeim",
