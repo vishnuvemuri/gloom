@@ -1,7 +1,7 @@
 services:
   - type: static_site
     name: gloomdev-website
-    buildCommand: npm install && npm run build
+    buildCommand: npm run render-build
     publishPath: dist
     envVars:
       - key: NODE_ENV
