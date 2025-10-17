@@ -14,8 +14,8 @@ const getApiUrl = () => {
     // In production, always use the backend URL
     return 'https://gloomdev-api.onrender.com';
   }
-  // In development, use the proxy from vite.config.ts
-  return '/api';
+  // In development, use production backend
+  return 'https://gloomdev-api.onrender.com';
 };
 
 export const sendEmail = async (data: EmailData): Promise<{ success: boolean; error?: string }> => {
