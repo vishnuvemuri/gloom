@@ -9,9 +9,10 @@ export interface EmailData {
 
 // Get API URL based on environment
 const getApiUrl = () => {
-  // In production, use the Render backend URL
+  // Check if we're in production
   if (import.meta.env.PROD) {
-    return import.meta.env.VITE_API_URL || 'https://gloomdev-api.onrender.com';
+    // In production, always use the backend URL
+    return 'https://gloomdev-api.onrender.com';
   }
   // In development, use the proxy from vite.config.ts
   return '/api';
@@ -32,6 +33,12 @@ export const sendEmail = async (data: EmailData): Promise<{ success: boolean; er
       },
       body: JSON.stringify(data),
     });
+
+    // Check if response is HTML (error case)
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('text/html')) {
+      throw new Error('Received HTML response instead of JSON. Check API URL configuration.');
+    }
 
     const result = await response.json();
 
