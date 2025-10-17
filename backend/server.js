@@ -16,8 +16,8 @@ const createTransporter = () => {
     port: 465,
     secure: true,
     auth: {
-      user: "info@gloomdev.in",
-      pass: "cAEz8PiuUeim", // App password
+      user: process.env.ZOHO_EMAIL || "info@gloomdev.in",
+      pass: process.env.ZOHO_PASSWORD || "cAEz8PiuUeim",
     },
   });
 };
@@ -49,7 +49,7 @@ app.post('/api/send-email', async (req, res) => {
 
     // Email content
     const mailOptions = {
-      from: "info@gloomdev.in",
+      from: process.env.ZOHO_EMAIL || "info@gloomdev.in",
       to: "info@gloomdev.in",
       subject: `Contact Form Submission from ${name}`,
       html: `
@@ -130,6 +130,16 @@ app.post('/api/send-email', async (req, res) => {
   }
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'GloomDev API Server', 
+    status: 'running',
+    endpoints: ['/api/health', '/api/send-email'],
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
@@ -138,4 +148,6 @@ app.get('/api/health', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Backend server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Zoho Email: ${process.env.ZOHO_EMAIL || 'info@gloomdev.in'}`);
 });
