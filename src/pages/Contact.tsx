@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Clock, Send, CheckCircle2, MapPin, ArrowRight } from 'lucide-react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { sendEmail, EmailData } from '../utils/emailService';
 
 const contactInfo = [
   {
@@ -73,24 +74,10 @@ export default function Contact() {
     setIsLoading(true);
     
     try {
-      // Send to Render backend API
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // Use EmailJS for direct email sending (no backend required)
+      const result = await sendEmail(formData as EmailData);
 
-      let result;
-      try {
-        result = await response.json();
-      } catch (jsonError) {
-        console.error('JSON parsing error:', jsonError);
-        throw new Error('Server response error. Please try again.');
-      }
-
-      if (response.ok && result.success) {
+      if (result.success) {
         setIsSubmitted(true);
         setFormData({ name: '', company: '', email: '', phone: '', service: '', message: '' });
         
@@ -105,7 +92,7 @@ export default function Contact() {
       console.error('Email sending error:', error);
       
       // Show error message to user
-      alert(`Failed to send message: ${error.message}. Please try again or contact us directly at info@gloomdev.in`);
+      alert(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again or contact us directly at info@gloomdev.in`);
       
     } finally {
       setIsLoading(false);
