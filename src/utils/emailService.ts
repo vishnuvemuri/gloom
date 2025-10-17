@@ -1,10 +1,3 @@
-import emailjs from '@emailjs/browser';
-
-// EmailJS configuration
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
-
 export interface EmailData {
   name: string;
   company?: string;
@@ -14,31 +7,34 @@ export interface EmailData {
   message: string;
 }
 
+// Get API URL based on environment
+const getApiUrl = () => {
+  // In production, use the Render backend URL
+  if (import.meta.env.PROD) {
+    return import.meta.env.VITE_API_URL || 'https://gloomdev-api.onrender.com';
+  }
+  // In development, use the proxy from vite.config.ts
+  return '/api';
+};
+
 export const sendEmail = async (data: EmailData): Promise<{ success: boolean; error?: string }> => {
   try {
-    // Initialize EmailJS
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    const apiUrl = getApiUrl();
+    const response = await fetch(`${apiUrl}/send-email`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
-    // Prepare template parameters
-    const templateParams = {
-      from_name: data.name,
-      from_email: data.email,
-      company: data.company || 'Not provided',
-      phone: data.phone || 'Not provided',
-      service: data.service || 'Not specified',
-      message: data.message,
-      to_email: 'info@gloomdev.in',
-      reply_to: data.email,
-    };
+    const result = await response.json();
 
-    // Send email
-    const response = await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      templateParams
-    );
+    if (!response.ok) {
+      throw new Error(result.error || 'Server error');
+    }
 
-    console.log('Email sent successfully:', response);
+    console.log('Email sent successfully:', result);
     return { success: true };
 
   } catch (error) {
