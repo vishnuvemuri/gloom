@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Clock, Send, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Mail, Clock, Send, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const contactInfo = [
   {
@@ -14,24 +14,6 @@ const contactInfo = [
     label: 'HR & Careers',
     value: 'hr@gloomdev.in',
     href: 'mailto:hr@gloomdev.in',
-  },
-  {
-    icon: Phone,
-    label: 'Phone',
-    value: '+91 83673 99638',
-    href: 'tel:+918367399638',
-  },
-  {
-    icon: Phone,
-    label: 'Alternate',
-    value: '+91 81421 89138',
-    href: 'tel:+918142189138',
-  },
-  {
-    icon: Phone,
-    label: 'Support',
-    value: '+91 91548 82509',
-    href: 'tel:+919154882509',
   },
   {
     icon: Clock,
@@ -128,24 +110,7 @@ export default function ContactForm() {
             </a>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white dark:bg-navy-light rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
-          >
-            <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4">
-              <Phone className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Phone</h3>
-            <a
-              href="tel:+918367399638"
-              className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-            >
-              +91 83673 99638
-            </a>
-          </motion.div>
+          
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

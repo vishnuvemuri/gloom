@@ -6,10 +6,12 @@ import Procurement from './pages/Procurement';
 import Training from './pages/Training';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/solutions" element={<Solutions />} />

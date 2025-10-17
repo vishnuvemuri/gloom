@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Clock, Send, CheckCircle2, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, Clock, Send, CheckCircle2, MapPin, ArrowRight } from 'lucide-react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
@@ -16,24 +16,6 @@ const contactInfo = [
     label: 'HR & Careers',
     value: 'hr@gloomdev.in',
     href: 'mailto:hr@gloomdev.in',
-  },
-  {
-    icon: Phone,
-    label: 'Phone',
-    value: '+91 83673 99638',
-    href: 'tel:+918367399638',
-  },
-  {
-    icon: Phone,
-    label: 'Alternate',
-    value: '+91 81421 89138',
-    href: 'tel:+918142189138',
-  },
-  {
-    icon: Phone,
-    label: 'Support',
-    value: '+91 91548 82509',
-    href: 'tel:+919154882509',
   },
   {
     icon: Clock,
@@ -91,8 +73,8 @@ export default function Contact() {
     setIsLoading(true);
     
     try {
-      // Try serverless function first (for Vercel/Netlify)
-      let response = await fetch('/api/send-email', {
+      // Send to Render backend API
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,19 +82,15 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
 
-      // If serverless function fails, try PHP backend
-      if (!response.ok) {
-        response = await fetch('/contact-handler.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
+      let result;
+      try {
+        result = await response.json();
+      } catch (jsonError) {
+        console.error('JSON parsing error:', jsonError);
+        throw new Error('Server response error. Please try again.');
       }
 
-      if (response.ok) {
-        const result = await response.json();
+      if (response.ok && result.success) {
         setIsSubmitted(true);
         setFormData({ name: '', company: '', email: '', phone: '', service: '', message: '' });
         
@@ -120,37 +98,14 @@ export default function Contact() {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        throw new Error('Server function not available');
+        throw new Error(result.error || 'Failed to send message');
       }
       
     } catch (error) {
-      console.log('Serverless function not available, using mailto fallback');
+      console.error('Email sending error:', error);
       
-      // Fallback to mailto for local development or if serverless function fails
-      const subject = encodeURIComponent(`Contact Form Message from ${formData.name}`);
-      const body = encodeURIComponent(`
-Name: ${formData.name}
-Email: ${formData.email}
-Company: ${formData.company || 'Not provided'}
-Phone: ${formData.phone || 'Not provided'}
-Service Interest: ${formData.service || 'Not specified'}
-
-Message:
-${formData.message}
-
----
-This message was sent from the GloomDev contact form.
-      `);
-      
-      const mailtoLink = `mailto:info@gloomdev.in?subject=${subject}&body=${body}`;
-      window.open(mailtoLink);
-      
-      setIsSubmitted(true);
-      setFormData({ name: '', company: '', email: '', phone: '', service: '', message: '' });
-      
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
+      // Show error message to user
+      alert(`Failed to send message: ${error.message}. Please try again or contact us directly at info@gloomdev.in`);
       
     } finally {
       setIsLoading(false);
@@ -382,7 +337,7 @@ This message was sent from the GloomDev contact form.
                           value={formData.phone}
                           onChange={handleChange}
                           className="w-full px-4 py-3 bg-white dark:bg-navy-light border border-gray-300 dark:border-navy rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-900 dark:text-white"
-                          placeholder="+91 98765 43210"
+                          placeholder="Your phone (optional)"
                         />
                       </div>
                     </div>
@@ -581,13 +536,6 @@ This message was sent from the GloomDev contact form.
                         </div>
                       </div>
                       <div className="flex items-center space-x-3">
-                        <a
-                          href="tel:+91-XXXXXXXXXX"
-                          className="inline-flex items-center space-x-1 px-3 py-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
-                        >
-                          <Phone className="w-4 h-4" />
-                          <span>Call</span>
-                        </a>
                         <a
                           href="mailto:info@gloomdev.in"
                           className="inline-flex items-center space-x-1 px-3 py-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"

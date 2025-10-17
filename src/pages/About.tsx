@@ -46,34 +46,34 @@ const leadership = [
 
 const milestones = [
   {
-    year: '2020',
-    title: 'Company Founded',
-    description: 'GloomDev Private Limited established with a vision to transform businesses through technology.',
-  },
-  {
-    year: '2021',
-    title: 'First Major Client',
-    description: 'Secured our first enterprise client and delivered successful software development project.',
-  },
-  {
-    year: '2022',
-    title: 'Expansion',
-    description: 'Expanded operations to serve clients across India.',
-  },
-  {
-    year: '2023',
-    title: 'Training Division',
-    description: 'Launched professional training programs and academic partnerships.',
+    year: '2024',
+    title: 'Founded',
+    description: 'GloomDev was established in June 2024 with a mission to redefine business efficiency through intelligent technology.',
   },
   {
     year: '2024',
-    title: 'Procurement Services',
-    description: 'Expanded into strategic procurement and vendor management services.',
+    title: 'First Milestone',
+    description: 'Delivered enterprise-grade software solutions leveraging AI and cloud-native architectures.',
+  },
+  {
+    year: '2024',
+    title: 'Training Division',
+    description: 'Launched specialized training programs to empower students and professionals in modern technologies.',
   },
   {
     year: '2025',
-    title: 'Future Growth',
-    description: 'Continuing to innovate and expand our service portfolio for client success.',
+    title: 'Expansion',
+    description: 'Grew our operations nationwide, collaborating with clients across industries to deliver scalable digital ecosystems.',
+  },
+  {
+    year: '2025',
+    title: 'Procurement Solutions',
+    description: 'Introduced advanced procurement and automation platforms for optimized business operations.',
+  },
+  {
+    year: '2026',
+    title: 'Future Vision',
+    description: 'Innovating with Agentic AI, IoT, and Cloud Intelligence to build adaptive, self-driven business systems that shape the future of technology.',
   },
 ];
 
@@ -124,7 +124,7 @@ export default function About() {
                   transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                   className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-3xl mx-auto font-normal"
                 >
-                  GloomDev empowers organizations through innovation, integrity, and excellence across every service we deliver.
+                  Founded in 2024, GloomDev Private Limited is built on innovation, technology, and trust — driving digital transformation with next-gen solutions.
                 </motion.p>
                 
                 {/* Key Metrics */}
@@ -135,8 +135,8 @@ export default function About() {
                   className="grid grid-cols-3 gap-8 pt-8"
                 >
                   <div className="text-center">
-                    <div className="text-2xl md:text-3xl font-semibold text-blue-400 mb-1">5+</div>
-                    <div className="text-sm text-slate-300 font-normal">Years Experience</div>
+                    <div className="text-2xl md:text-3xl font-semibold text-blue-400 mb-1">2024</div>
+                    <div className="text-sm text-slate-300 font-normal">Founded</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl md:text-3xl font-semibold text-cyan-400 mb-1">100%</div>

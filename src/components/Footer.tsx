@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Globe } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Twitter, Github, Globe } from 'lucide-react';
 
 const quickLinks = [
   { label: 'Home', href: '#home' },
@@ -94,20 +94,6 @@ export default function Footer() {
                 <a href="mailto:hr@gloomdev.in" className="hover:text-primary transition-colors">
                   hr@gloomdev.in
                 </a>
-              </li>
-              <li className="flex items-start space-x-3 text-sm">
-                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
-                <div>
-                  <a href="tel:+918367399638" className="hover:text-primary transition-colors block">
-                    +91 83673 99638
-                  </a>
-                  <a href="tel:+918142189138" className="hover:text-primary transition-colors block">
-                    +91 81421 89138
-                  </a>
-                  <a href="tel:+919154882509" className="hover:text-primary transition-colors block">
-                    +91 91548 82509
-                  </a>
-                </div>
               </li>
             </ul>
           </motion.div>
