@@ -26,7 +26,7 @@ export const sendEmail = async (data: EmailData): Promise<{ success: boolean; er
       PROD: import.meta.env.PROD,
       VITE_API_URL: import.meta.env.VITE_API_URL
     });
-    const response = await fetch(`${apiUrl}/send-email`, {
+    const response = await fetch(`${apiUrl}/api/send-email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
